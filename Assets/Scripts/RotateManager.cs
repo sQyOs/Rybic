@@ -8,6 +8,7 @@ public class RotateManager : MonoBehaviour
     private Transform _selectUnit;
     private int _degre = 90;
     public float rotateSped = 1;
+    public int catchRadius = 3;
 
 
 
@@ -17,13 +18,13 @@ public class RotateManager : MonoBehaviour
         switch (plane)
         {
             case "X":
-                _plane = new Vector3(0, 2, 2);
+                _plane = new Vector3(0, catchRadius, catchRadius);
                 break;
             case "Y":
-                _plane = new Vector3(2, 0, 2);
+                _plane = new Vector3(catchRadius, 0, catchRadius);
                 break;
             case "Z":
-                _plane = new Vector3(2, 2, 0);
+                _plane = new Vector3(catchRadius, catchRadius, 0);
                 break;
             default:
                 break;

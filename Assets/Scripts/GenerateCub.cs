@@ -36,15 +36,9 @@ public class GenerateCub : MonoBehaviour
             }
         }
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    Ray mouseClick = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit
-        //}
-
         // change the camera color and position
         //Camera.main.clearFlags = CameraClearFlags.SolidColor;
-        //Camera.main.transform.position = new Vector3(2, 1, 10);
+        Camera.main.transform.position = new Vector3(2, 1, 7);
         //Camera.main.transform.Rotate(0, -160, 0);
 
         scale = 0.1f;
