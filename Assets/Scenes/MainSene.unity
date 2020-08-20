@@ -264,6 +264,8 @@ GameObject:
   - component: {fileID: 1082499900}
   - component: {fileID: 1082499899}
   - component: {fileID: 1082499901}
+  - component: {fileID: 1082499903}
+  - component: {fileID: 1082499902}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -312,6 +314,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectableTag: Cube
+  _Controller: {fileID: 1082499898}
+  direction: 1
+  axes: 1
+--- !u!114 &1082499902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082499898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff36c7d7c0cafb04f91cba478b1b6a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1082499903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082499898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b3ce9bce4ffeb429e7e52c89768f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Controller: {fileID: 1082499898}
+  rotateSped: 1
 --- !u!1 &1126003304
 GameObject:
   m_ObjectHideFlags: 0

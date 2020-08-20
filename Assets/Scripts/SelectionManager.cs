@@ -5,56 +5,93 @@ using UnityEngine;
 public class SelectionManager : MonoBehaviour
 {
     [SerializeField] private string selectableTag = "Cube";
+    [SerializeField] private GameObject _Controller;
     private bool isSelected = false;
     private Transform lastSelectedObject;
-    // Start is called before the first frame update
+    private Transform _selection;
+    public Transform selection { get { return _selection; } }
+
+    private enum directionList
+    {
+        clockwise = 1,
+        counterclockwise = 2
+
+    }
+    [SerializeField] private directionList direction = directionList.clockwise;
+    private int directionForRotation = -1;
+
+    private enum axesList
+    {
+        X = 1,
+        Y = 2,
+        Z = 3
+    }
+
+    [SerializeField] private axesList axes = axesList.X;
+
+    private string dimensionForRotation = "X";
+
+
     private void Awake()
     {
         isSelected = false;
     }
+
     private void Update()
     {
+        switch (axes)
+        {
+            case axesList.X:
+                dimensionForRotation = "X";
+                break;
+            case axesList.Y:
+                dimensionForRotation = "Y";
+                break;
+            case axesList.Z:
+                dimensionForRotation = "Z";
+                break;
+            default:
+                dimensionForRotation = "X";
+                break;
+        }
+
+        switch (direction)
+        {
+            case directionList.clockwise:
+                directionForRotation = 1;
+                break;
+            case directionList.counterclockwise:
+                directionForRotation = -1;
+                break;
+            default:
+                directionForRotation = 1;
+                break;
+        }
+
+        //left mouse click, cast ray
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag(selectableTag))
             {
-                Transform selection = hit.transform;
-                Debug.Log(selection.name);
+                _selection = hit.transform;
+                Debug.Log(_selection.name);
                 if (isSelected)
                 {
                     lastSelectedObject.GetComponent<SelectUnit>().changeSelect();
                 }
-                lastSelectedObject = selection;
-                selection.GetComponent<SelectUnit>().changeSelect();
+                lastSelectedObject = _selection;
+                _selection.GetComponent<SelectUnit>().changeSelect();
                 isSelected = true;
 
-                //StartCoroutine(testCoroutine(selection));
-
-                Collider[] colliders = Physics.OverlapBox(selection.transform.position, new Vector3(2, 0, 2));
-                for (int i = 0; i < 10; i++)
-                {
-                    foreach (Collider item in colliders)
-                    {
-                        item.transform.RotateAround(Vector3.zero, Vector3.up, 90);
-                        //item.transform.RotateAround(Vector3.zero, Vector3.up, 9.0f * Time.deltaTime);
-                    } 
-                }
+                _Controller.GetComponent<RotateManager>().RotateCubeEdge(dimensionForRotation, directionForRotation);
             }
             else
             {
                 lastSelectedObject.GetComponent<SelectUnit>().changeSelect();
                 isSelected = false;
             }
-        }
-    }
-    private IEnumerator testCoroutine(Transform selection)
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            selection.transform.RotateAround(Vector3.zero, Vector3.up, 9.0f * Time.deltaTime);
-            yield return null; 
         }
     }
 }
