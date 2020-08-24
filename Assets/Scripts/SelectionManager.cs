@@ -11,25 +11,25 @@ public class SelectionManager : MonoBehaviour
     private Transform _selection;
     public Transform selection { get { return _selection; } }
 
-    private enum directionList
-    {
-        clockwise = 1,
-        counterclockwise = 2
+    //private enum directionList
+    //{
+    //    clockwise = 1,
+    //    counterclockwise = 2
 
-    }
-    [SerializeField] private directionList direction = directionList.clockwise;
-    private int directionForRotation = -1;
+    //}
+    //[SerializeField] private directionList direction = directionList.clockwise;
+    //private int directionForRotation = -1;
 
-    private enum axesList
-    {
-        X = 1,
-        Y = 2,
-        Z = 3
-    }
+    //private enum axesList
+    //{
+    //    X = 1,
+    //    Y = 2,
+    //    Z = 3
+    //}
 
-    [SerializeField] private axesList axes = axesList.X;
+    //[SerializeField] private axesList axes = axesList.X;
 
-    private string dimensionForRotation = "X";
+    //private string dimensionForRotation = "X";
 
 
     private void Awake()
@@ -39,34 +39,34 @@ public class SelectionManager : MonoBehaviour
 
     private void Update()
     {
-        switch (axes)
-        {
-            case axesList.X:
-                dimensionForRotation = "X";
-                break;
-            case axesList.Y:
-                dimensionForRotation = "Y";
-                break;
-            case axesList.Z:
-                dimensionForRotation = "Z";
-                break;
-            default:
-                dimensionForRotation = "X";
-                break;
-        }
+        //switch (axes)
+        //{
+        //    case axesList.X:
+        //        dimensionForRotation = "X";
+        //        break;
+        //    case axesList.Y:
+        //        dimensionForRotation = "Y";
+        //        break;
+        //    case axesList.Z:
+        //        dimensionForRotation = "Z";
+        //        break;
+        //    default:
+        //        dimensionForRotation = "X";
+        //        break;
+        //}
 
-        switch (direction)
-        {
-            case directionList.clockwise:
-                directionForRotation = 1;
-                break;
-            case directionList.counterclockwise:
-                directionForRotation = -1;
-                break;
-            default:
-                directionForRotation = 1;
-                break;
-        }
+        //switch (direction)
+        //{
+        //    case directionList.clockwise:
+        //        directionForRotation = 1;
+        //        break;
+        //    case directionList.counterclockwise:
+        //        directionForRotation = -1;
+        //        break;
+        //    default:
+        //        directionForRotation = 1;
+        //        break;
+        //}
 
         //left mouse click, cast ray
         if (Input.GetMouseButtonDown(0))
@@ -85,9 +85,9 @@ public class SelectionManager : MonoBehaviour
                 _selection.GetComponent<SelectUnit>().changeSelect();
                 isSelected = true;
 
-                _Controller.GetComponent<RotateManager>().RotateCubeEdge(dimensionForRotation, directionForRotation);
+                //_Controller.GetComponent<RotateManager>().RotateCubeEdge(dimensionForRotation, directionForRotation);
             }
-            else
+            else if (isSelected)
             {
                 lastSelectedObject.GetComponent<SelectUnit>().changeSelect();
                 isSelected = false;
