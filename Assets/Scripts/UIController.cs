@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
 
     public void RotateVerticalUp_Z()
     {
-        GetComponent<RotateManager>().RotateCubeEdge("Z", 1);
+        GetComponent<RotateManager>().RotateCubeEdge("Z", -1);
     }
 
     public void RotateVerticalDown_X()
@@ -32,6 +32,6 @@ public class UIController : MonoBehaviour
 
     public void RotateVerticalDown_Z()
     {
-        GetComponent<RotateManager>().RotateCubeEdge("Z", -1);
+        GetComponent<RotateManager>().RotateCubeEdge("Z", 1);
     }
 }
