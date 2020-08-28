@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class OrbitCamera : MonoBehaviour
 {
+    [SerializeField] GameObject Controller;
     public float rotSpeed = 5f;
+    public float lookDistanceMultiplier = 1.5f;
     private Vector3 target = new Vector3(0, 0, 0);
     private Vector3 _offset;
     private float _rotY;
@@ -13,12 +15,14 @@ public class OrbitCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rotY = transform.eulerAngles.y;
-        _rotX = transform.eulerAngles.x;
-        _offset = new Vector3(0, 0, 0) - transform.position;
+        float targetCenter = Controller.GetComponent<GenerateCubeEdge>().dimension / 2f + 0.5f;
+        target = Vector3.one * targetCenter;
+        _offset = Vector3.one * targetCenter * lookDistanceMultiplier;
+        transform.position = target - _offset;
+        transform.LookAt(target);
     }
 
-    
+
     private void LateUpdate()
     {
         if (Input.GetMouseButton(1))
