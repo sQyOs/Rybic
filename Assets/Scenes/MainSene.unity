@@ -900,8 +900,9 @@ GameObject:
   - component: {fileID: 1082499902}
   - component: {fileID: 1082499904}
   - component: {fileID: 1082499899}
+  - component: {fileID: 1082499905}
   m_Layer: 0
-  m_Name: Controller
+  m_Name: CubeController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -988,6 +989,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f967d0995c26dc84babc9faf40e81464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1082499905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082499898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b7ff5f1c6ec2c4cbb93f022ee53593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1082499898}
+  positionDifference: 1
 --- !u!1 &1110790733
 GameObject:
   m_ObjectHideFlags: 0
