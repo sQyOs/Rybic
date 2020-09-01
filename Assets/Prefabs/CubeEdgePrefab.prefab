@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8590383396620683157}
   - component: {fileID: 5824239976902931295}
   - component: {fileID: 5661515539040541484}
+  - component: {fileID: 2824815534761534884}
   m_Layer: 0
   m_Name: CubeEdgePrefab
   m_TagString: Edge
@@ -60,7 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 320c9b69e42ac9441b99caa68635ff79, type: 3}
+  - {fileID: 2100000, guid: 67ceaae02dd19ff4b9bf1422f277aedf, type: 2}
+  - {fileID: 2100000, guid: 893b84bb91d3cd64f83b12b7f35efcc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,3 +97,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.017999995, y: 0.0009999993, z: 0.018000001}
   m_Center: {x: 0, y: 0.009544159, z: -0.0000000018626454}
+--- !u!114 &2824815534761534884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463753751246541450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70b329ee9b877642958df0185c7bda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTransparency: 0.3

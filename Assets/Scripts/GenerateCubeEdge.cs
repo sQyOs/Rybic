@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,12 @@ public class GenerateCubeEdge : MonoBehaviour
 {
     [SerializeField] private GameObject CubeEdge;
     public int dimension = 3;
+    private Vector3 center = Vector3.zero;
 
 
     void Awake()
     {
+        center = Vector3.one * (dimension / 2f + 0.5f);
         GameObject go;
 
         //create edge
@@ -33,14 +36,37 @@ public class GenerateCubeEdge : MonoBehaviour
                 }
             }
         }
-        float center = dimension / 2f + 0.5f;
-        Collider[] deletedObj = Physics.OverlapBox(Vector3.one * center, Vector3.one * center - Vector3.one);
+        Collider[] deletedObj = Physics.OverlapBox(center, center - Vector3.one);
         foreach (Collider item in deletedObj)
         {
             if (item.tag == "Edge")
             {
                 Destroy(item.gameObject);
             }
+        }
+
+        Dictionary<Color, Vector3> colorsDirections = new Dictionary<Color, Vector3>
+        {
+            {Color.white  , Vector3.down    },
+            {Color.black  , Vector3.right   },
+            {Color.green  , Vector3.left    },
+            {Color.red    , Vector3.up      },
+            {Color.blue   , Vector3.forward },
+            {Color.yellow , Vector3.back    }
+        };
+
+        foreach (var item in colorsDirections)
+        {
+            paint(item.Key, item.Value);
+        }
+    }
+
+    private void paint(Color color, Vector3 direction)
+    {
+        Collider[] colliders = Physics.OverlapBox(center + direction * center.y - direction, center - Vector3.one);
+        foreach (Collider item in colliders)
+        {
+            item.gameObject.GetComponent<Renderer>().material.color = color;
         }
     }
 }
