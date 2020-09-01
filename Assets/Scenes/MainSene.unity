@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f122b1d27109a6468a32e5677a9f928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectableTag: Cube
+  selectableTag: Edge
   _Controller: {fileID: 1082499898}
 --- !u!114 &1082499902
 MonoBehaviour:

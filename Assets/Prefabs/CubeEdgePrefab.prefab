@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5824239976902931295}
   - component: {fileID: 5661515539040541484}
   - component: {fileID: 2824815534761534884}
+  - component: {fileID: 1107079254324412272}
   m_Layer: 0
   m_Name: CubeEdgePrefab
   m_TagString: Edge
@@ -110,3 +111,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTransparency: 0.3
+--- !u!114 &1107079254324412272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463753751246541450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e424aba3ce0df304d8d861d5bd2e35bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleSelect: 0

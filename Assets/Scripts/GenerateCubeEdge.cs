@@ -26,12 +26,12 @@ public class GenerateCubeEdge : MonoBehaviour
                     for (int i = 0; i < 360; i += 90)
                     {
                         go = Instantiate(CubeEdge, new Vector3(x, y, z), Quaternion.AngleAxis(i, Vector3.right));
-                        go.name = $"Edge {x} {y} {z} {go.transform.rotation.eulerAngles}";
+                        go.name = $"Edge {x} {y} {z} {go.transform.rotation.eulerAngles.normalized}";
                     }
                     for (int i = 90; i < 360; i += 180)
                     {
                         go = Instantiate(CubeEdge, new Vector3(x, y, z), Quaternion.AngleAxis(i, Vector3.forward));
-                        go.name = $"Edge {x} {y} {z} {go.transform.rotation.eulerAngles}";
+                        go.name = $"Edge {x} {y} {z} {go.transform.rotation.eulerAngles.normalized}";
                     }
                 }
             }
