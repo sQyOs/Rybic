@@ -6,6 +6,7 @@ public class ControlManager : MonoBehaviour
 {
     [SerializeField] GameObject controller;
     [SerializeField] float positionDifference = 1;
+    [SerializeField] GameObject rotationControlCircle;
     private float targetCenter = 0;
     private Vector3 startMousePosition = Vector3.zero;
     private Vector3 currentMousePosition = Vector3.zero;
@@ -17,6 +18,7 @@ public class ControlManager : MonoBehaviour
     private Transform _selectedUnit;
     public bool isRotate = false;
     private bool singleClick = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,10 @@ public class ControlManager : MonoBehaviour
     {
         //запоминаем стартовое положение курсора и начинаем расчёты движения
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            rotationControlCircle.SetActive(false);
+        }
         if (Input.GetMouseButton(0))
         {
             _selectedUnit = controller.GetComponent<SelectionManager>().selection;
@@ -39,17 +45,33 @@ public class ControlManager : MonoBehaviour
             {
                 startMousePosition = Input.mousePosition;
                 singleClick = true;
+                rotationControlCircle.transform.position = startMousePosition;
             }
             if (_selectedUnit != null && singleClick)
             {
                 //вычисляем текущие координаты курсора
                 currentMousePosition = Input.mousePosition;
 
+                //вычисляем угол поворота камеры по оси Y относительно куба с поправкой на 45 градусов, в секторах по 180, в радианах
+                cameraRelativeAngle = ((cameraTransform.eulerAngles.y + 45) % 180) * Mathf.Deg2Rad;
 
+                //активируем UI круг области поворота и поворачиваем в зависимости от выбранной грани
+                //если вертикальные 45 градусов, если горизонтальные в зависимости от положения камеры)
+                rotationControlCircle.SetActive(true);
+                Debug.Log(rotationControlCircle.transform.eulerAngles);
+                if (Mathf.Abs(_selectedUnit.up.normalized.y) == 1)
+                {
+                    rotationControlCircle.transform.eulerAngles = new Vector3(0, 0, _selectedUnit.up.normalized.y * cameraRelativeAngle * Mathf.Rad2Deg % 90);
+                }
+                else
+                {
+                    rotationControlCircle.transform.eulerAngles = new Vector3(0, 0, 45);
+                }
+
+                //проверяем движение мышью
                 if (Vector3.Distance(startMousePosition, currentMousePosition) > positionDifference)
                 {
-                    //вычисляем угол поворота камеры по оси Y относительно куба с поправкой на 45 градусов, в секторах по 180, в радианах
-                    cameraRelativeAngle = ((cameraTransform.eulerAngles.y + 45) % 180) * Mathf.Deg2Rad;
+
                     float signCameraPosition = -Mathf.Sign(Vector3.Dot(new Vector3(1, 0, 1) * targetCenter, cameraTransform.position - Vector3.one * targetCenter));
 
                     if (Mathf.Abs(_selectedUnit.up.normalized.y) == 1)
@@ -62,7 +84,7 @@ public class ControlManager : MonoBehaviour
                         Vector3 axisCorrectionPerpend = new Vector3(-axisCorrection.y / axisCorrection.x, 1);
 
                         //вычисляем через скалярное произведение знаки движения курсора и расположения камеы
-                        float signMouseMove = signUpDown* Mathf.Sign(Vector3.Dot(axisCorrectionPerpend, currentMousePosition - startMousePosition));
+                        float signMouseMove = signUpDown * Mathf.Sign(Vector3.Dot(axisCorrectionPerpend, currentMousePosition - startMousePosition));
                         _sign = signCameraPosition * signMouseMove;
 
                         //вычисляем и выводим угол движения указателя и предполагаемое вращение куба по осям относительно камеры
