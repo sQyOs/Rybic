@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.96
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: cfe309e3cb97cb54db7b4e8d74ab6b0d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateVerticalDown_Z
         m_Mode: 1
@@ -448,7 +448,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateVerticalUp_Z
         m_Mode: 1
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateHorizontal_Left
         m_Mode: 1
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateHorizontal_Right
         m_Mode: 1
@@ -973,7 +973,6 @@ GameObject:
   - component: {fileID: 1082499901}
   - component: {fileID: 1082499903}
   - component: {fileID: 1082499902}
-  - component: {fileID: 1082499904}
   - component: {fileID: 1082499899}
   - component: {fileID: 1082499905}
   m_Layer: 0
@@ -1024,7 +1023,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectableTag: Edge
-  _Controller: {fileID: 1082499898}
 --- !u!114 &1082499902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,21 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3ce9bce4ffeb429e7e52c89768f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 1082499898}
-  rotateSped: 1
-  catchRadius: 3
---- !u!114 &1082499904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1082499898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f967d0995c26dc84babc9faf40e81464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  rotateSped: 0.509
 --- !u!114 &1082499905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,8 +1060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b7ff5f1c6ec2c4cbb93f022ee53593, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1082499898}
-  positionDifference: 1
+  positionDifferenceMain: 1
+  positionDifferenceDrawGizmos: 5
+  positionDifferenceRotate: 60
   rotationControlCircle: {fileID: 1167928174}
   isRotate: 0
 --- !u!1 &1110790733
@@ -1199,7 +1184,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateVerticalDown_X
         m_Mode: 1
@@ -1653,7 +1638,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1082499904}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: RotateVerticalUp_X
         m_Mode: 1

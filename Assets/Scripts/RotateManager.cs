@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class RotateManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _controller;
     private Transform _selectedUnit;
     private int _degre = 90;
+    [Range(0.1f,1.0f)]
     public float rotateSped = 1;
-    public int catchRadius = 3;
     private float targetCenter;
 
     public void RotateCubeEdge(string plane, float directionForRotation)
     {
-        _controller.GetComponent<ControlManager>().isRotate = true;
-        targetCenter = _controller.GetComponent<GenerateCubeEdge>().dimension / 2f + 0.5f;
+        GetComponent<ControlManager>().isRotate = true;
+        targetCenter = GetComponent<GenerateCubeEdge>().dimension / 2f + 0.5f;
         Vector3 _plane = Vector3.zero;
         switch (plane)
         {
             case "X":
-                _plane = new Vector3(0, catchRadius, catchRadius);
+                _plane = new Vector3(0, targetCenter, targetCenter);
                 break;
             case "Y":
-                _plane = new Vector3(catchRadius, 0, catchRadius);
+                _plane = new Vector3(targetCenter, 0, targetCenter);
                 break;
             case "Z":
-                _plane = new Vector3(catchRadius, catchRadius, 0);
+                _plane = new Vector3(targetCenter, targetCenter, 0);
                 break;
             default:
                 break;
@@ -41,14 +40,14 @@ public class RotateManager : MonoBehaviour
                 _Axis = Vector3.up;
                 break;
             case "Z":
-                _Axis = Vector3.forward;
+                _Axis = Vector3.back;
                 break;
             default:
                 break;
         }
 
 
-        _selectedUnit = _controller.GetComponent<SelectionManager>().selection;
+        _selectedUnit = GetComponent<SelectionManager>().selection;
 
         Vector3 centerForRotation = Vector3.zero;
         Vector3 scaleForRotation = Vector3.zero;
@@ -71,7 +70,7 @@ public class RotateManager : MonoBehaviour
         Collider[] selectColliders = Physics.OverlapBox(centerForRotation, scaleForRotation / 2);
         foreach (Collider collider in selectColliders)
         {
-            StartCoroutine(_controller.GetComponent<RotateCube>().RotateColliderAround(collider, Vector3.one * targetCenter, _Axis, _degre * directionForRotation, rotateSped));
+            StartCoroutine(GetComponent<RotateCube>().RotateColliderAround(collider, Vector3.one * targetCenter, _Axis, _degre * directionForRotation, rotateSped));
         }
         
     }

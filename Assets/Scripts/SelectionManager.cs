@@ -5,7 +5,6 @@ using UnityEngine;
 public class SelectionManager : MonoBehaviour
 {
     [SerializeField] private string selectableTag = "Edge";
-    [SerializeField] private GameObject _Controller;
     private bool isSelected = false;
     private Transform lastSelectedObject;
     private Transform _selectedUnit;
