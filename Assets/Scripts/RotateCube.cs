@@ -21,6 +21,7 @@ public class RotateCube : MonoBehaviour
         if (step > 1.0)
         {
             transform.RotateAround(point, axis, rotateDegree * (1.0f - lastStep));
+            GetComponent<ControlManager>().isRotate = false;
         }
     }
 }

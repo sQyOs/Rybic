@@ -974,7 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b3ce9bce4ffeb429e7e52c89768f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Controller: {fileID: 1082499898}
+  _controller: {fileID: 1082499898}
   rotateSped: 1
   catchRadius: 3
 --- !u!114 &1082499904
@@ -1003,6 +1003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1082499898}
   positionDifference: 1
+  isRotate: 0
 --- !u!1 &1110790733
 GameObject:
   m_ObjectHideFlags: 0
