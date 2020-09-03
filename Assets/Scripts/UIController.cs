@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
     //_Controller.GetComponent<RotateManager>().RotateCubeEdge(dimensionForRotation, directionForRotation);
     public void RotateHorizontal_Right()
     {
