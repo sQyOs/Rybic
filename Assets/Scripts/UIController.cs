@@ -4,38 +4,27 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    [SerializeField] UnityEngine.UI.Dropdown tangledLevels;
+    public float tanglingSpeed = 0.1f;
+
     public void CloseApp()
     {
         Application.Quit();
     }
-    //_Controller.GetComponent<RotateManager>().RotateCubeEdge(dimensionForRotation, directionForRotation);
-    public void RotateHorizontal_Right()
+
+    public void Tangling()
     {
-        GetComponent<RotateManager>().RotateCubeEdge("Y", -1);
+        if (tangledLevels.value != 0)
+        {
+            float standartRotateSpeed = GetComponent<RotateManager>().rotateSped;
+            GetComponent<RotateManager>().rotateSped = tanglingSpeed;
+            for (int i = 0; i < tangledLevels.value; i++)
+            {
+                GetComponent<RotateManager>().RotateCubeEdge("Y", Mathf.Sign(Random.value - 0.5f));
+            }
+            GetComponent<RotateManager>().rotateSped = standartRotateSpeed;
+        }
+
     }
 
-    public void RotateHorizontal_Left()
-    {
-        GetComponent<RotateManager>().RotateCubeEdge("Y", 1);
-    }
-
-    public void RotateVerticalUp_X()
-    {
-        GetComponent<RotateManager>().RotateCubeEdge("X", 1);
-    }
-
-    public void RotateVerticalUp_Z()
-    {
-        GetComponent<RotateManager>().RotateCubeEdge("Z", -1);
-    }
-
-    public void RotateVerticalDown_X()
-    {
-        GetComponent<RotateManager>().RotateCubeEdge("X", -1);
-    }
-
-    public void RotateVerticalDown_Z()
-    {
-        GetComponent<RotateManager>().RotateCubeEdge("Z", 1);
-    }
 }
