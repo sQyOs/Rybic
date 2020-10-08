@@ -75,6 +75,7 @@ public class ControlManager : MonoBehaviour
 
                     float signCameraPosition = -Mathf.Sign(Vector3.Dot(new Vector3(1, 0, 1) * targetCenter, cameraTransform.position - Vector3.one * targetCenter));
 
+                    //если локальная зеленая(up) ось смотрит вверх или вниз(+-y)
                     if (Mathf.Abs(_selectedUnit.up.normalized.y) == 1)
                     {
                         float signUpDown = Mathf.Sign(_selectedUnit.up.y);
